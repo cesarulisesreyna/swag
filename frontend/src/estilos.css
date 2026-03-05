@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  *,
+  *::before,
+  *::after {
+    @apply box-border;
+  }
+
+  body {
+    @apply min-h-screen font-sans antialiased bg-slate-100 text-slate-700 dark:bg-oscuro-100 dark:text-neutro-200;
+    background-image: radial-gradient(circle at 0% 0%, rgba(16, 185, 129, 0.08), transparent 55%),
+      radial-gradient(circle at 90% 10%, rgba(59, 130, 246, 0.08), transparent 45%),
+      linear-gradient(180deg, #f8fafc 0%, #eef2ff 50%, #f8fafc 100%);
+  }
+
+  .theme-dark {
+    background-image: none;
+    background-color: #0d1428;
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
+
+  a {
+    @apply text-inherit no-underline;
+  }
+}
+
+@layer components {
+  .tarjeta-suave {
+    @apply rounded-3xl bg-white/95 shadow-xl shadow-slate-200/70 ring-1 ring-slate-900/5 backdrop-blur
+      dark:bg-oscuro-200/70 dark:ring-oscuro-300 dark:shadow-black/20;
+  }
+
+  .titulo-seccion {
+    @apply text-slate-900 text-3xl font-semibold tracking-tight dark:text-neutro-50;
+  }
+
+  .descripcion-suave {
+    @apply text-slate-500 text-base dark:text-neutro-300;
+  }
+
+  .boton-principal {
+    @apply inline-flex items-center justify-center rounded-xl bg-primario-500 px-5 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-lg shadow-primario-500/20 transition hover:bg-primario-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primario-500/40 disabled:cursor-not-allowed disabled:bg-primario-500/40 dark:bg-esmeralda-500 dark:text-oscuro-50 dark:shadow-esmeralda-500/25 dark:hover:bg-esmeralda-600 dark:focus-visible:ring-esmeralda-500/40;
+  }
+
+  .boton-secundario {
+    @apply inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-600 transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/40 disabled:cursor-not-allowed disabled:bg-slate-100 dark:border-oscuro-300 dark:bg-oscuro-200/70 dark:text-neutro-200 dark:hover:bg-oscuro-300 dark:focus-visible:ring-oscuro-300/40;
+  }
+
+  .campo-formulario {
+    @apply flex flex-col gap-2;
+  }
+
+  .input-formulario {
+    @apply w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-700 shadow-sm transition focus:border-primario-500 focus:outline-none focus:ring-2 focus:ring-primario-500/30 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400 dark:border-oscuro-300 dark:bg-oscuro-200/70 dark:text-neutro-100 dark:focus:border-esmeralda-500 dark:focus:ring-esmeralda-500/30 dark:disabled:bg-oscuro-300;
+  }
+
+  .etiqueta-formulario {
+    @apply text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-neutro-300;
+  }
+
+  .mensaje-error {
+    @apply text-sm font-medium text-rose-500 dark:text-rose-400;
+  }
+
+  .mensaje-estado {
+    @apply rounded-xl border px-4 py-3 text-sm font-semibold;
+  }
+
+  .mensaje-exito {
+    @apply border-emerald-200 bg-emerald-50 text-emerald-600 dark:border-esmeralda-500/30 dark:bg-esmeralda-500/10 dark:text-esmeralda-500;
+  }
+
+  .mensaje-fallo {
+    @apply border-rose-200 bg-rose-50 text-rose-500 dark:border-rose-500/30 dark:bg-rose-500/10 dark:text-rose-400;
+  }
+
+  .mensaje-info {
+    @apply border-blue-200 bg-blue-50 text-blue-600 dark:border-blue-500/30 dark:bg-blue-500/10 dark:text-blue-400;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .animate-slideUp {
+    animation: slideUp 0.4s ease-out;
+  }
+
+  .animate-slideDown {
+    animation: slideDown 0.4s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Estilos personalizados adicionales */
+select.input-formulario {
+  @apply cursor-pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+}
+
+.dark select.input-formulario {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%9ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+}
+
+input[type="date"].input-formulario,
+input[type="time"].input-formulario {
+  @apply cursor-pointer;
+}
+
+/* Mejoras para los estados del input */
+.input-formulario:hover:not(:disabled) {
+  @apply border-slate-300 dark:border-oscuro-200;
+}
+
+.input-formulario::placeholder {
+  @apply text-slate-400 dark:text-neutro-500;
+}
+
+/* Transiciones suaves */
+.tarjeta-suave,
+.boton-principal,
+.boton-secundario,
+.input-formulario {
+  @apply transition-all duration-200 ease-out;
+}
